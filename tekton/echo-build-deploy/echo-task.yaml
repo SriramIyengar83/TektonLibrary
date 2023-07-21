@@ -1,0 +1,13 @@
+apiVersion: tekton.dev/v1 # or tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: echo-task
+spec:
+  params:
+    - name: variableToEcho
+      type: string
+      description: echo variable
+  steps:
+    - image: busybox
+      command: ["echo"]
+      args: ["$(params.variableToEcho)"]

@@ -1,0 +1,10 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: pipelinerun-echo-task
+spec:
+  pipelineRef:
+    name: pipeline-echo
+  params:
+   - name: echoparam
+     value: "echo example" 

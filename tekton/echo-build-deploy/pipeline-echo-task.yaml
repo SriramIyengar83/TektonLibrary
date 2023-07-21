@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: pipeline-echo
+spec:
+  params:
+    - name: echoparam
+      type: string
+      description: "test echo"  
+  tasks:
+    - name: echo-task-call
+      taskRef:
+        name: echo-task # commit expects a Workspace named "source"
+      params:
+        - name: variableToEcho 
+          value: "$(params.echoparam)"  
